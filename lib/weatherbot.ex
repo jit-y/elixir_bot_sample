@@ -1,18 +1,8 @@
 defmodule Weatherbot do
-  @moduledoc """
-  Documentation for Weatherbot.
-  """
+  use Application
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Weatherbot.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def start(_type, _args) do
+    children = [Plug.Adapters.Cowboy.child_spec(:http, Weatherbot.Router, [], port: 4000)]
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 end
