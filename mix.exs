@@ -16,7 +16,7 @@ defmodule Weatherbot.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [
-      extra_applications: [:logger, :cowboy, :plug],
+      extra_applications: [:logger],
       mod: {Weatherbot, []}
     ]
   end
@@ -33,7 +33,9 @@ defmodule Weatherbot.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.1"},
-      {:plug, "~> 1.3"}
+      {:plug, "~> 1.3"},
+      {:poison, "~> 3.1"},
+      {:httpoison, "~> 0.11.1"}
     ]
   end
 end
